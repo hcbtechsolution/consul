@@ -4,8 +4,11 @@ services:
     container_name: consulserver01
     hostname: consulserver01
     command: ["tail", "-f", "/dev/null"]
+    ports:
+      - 8500:8500
     volumes:
       - ./servers/server01:/etc/consul.d
+  
   consulserver02:
     image: consul:1.15
     container_name: consulserver02
@@ -13,6 +16,7 @@ services:
     command: ["tail", "-f", "/dev/null"]
     volumes:
       - ./servers/server02:/etc/consul.d
+  
   consulserver03:
     image: consul:1.15
     container_name: consulserver03
@@ -20,6 +24,7 @@ services:
     command: ["tail", "-f", "/dev/null"]
     volumes:
       - ./servers/server03:/etc/consul.d
+  
   consulclient01:
     image: consul:1.15
     container_name: consulclient01
@@ -27,6 +32,7 @@ services:
     command: ["tail", "-f", "/dev/null"]
     volumes:
       - ./clients/consul01:/etc/consul.d
+  
   consulclient02:
     image: consul:1.15
     container_name: consulclient02
